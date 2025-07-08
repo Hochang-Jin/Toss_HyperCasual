@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(LineRenderer))]
 public class Preview : MonoBehaviour
 {
-    public LayerMask groundMask;
-    public float maxDistance = 100f;
+    public float maxDistance = 6f;
 
     private LineRenderer lineRenderer;
 
@@ -19,7 +19,7 @@ public class Preview : MonoBehaviour
         Vector3 origin = transform.position;
         Vector3 direction = Vector3.down;
         
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, maxDistance, groundMask);
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, maxDistance);
 
         if (hit.collider != null)
         {

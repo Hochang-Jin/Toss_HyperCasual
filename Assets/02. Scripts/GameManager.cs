@@ -1,14 +1,18 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject preview;
+    public GameObject preview;
     [SerializeField] private GameObject fruit;
     [SerializeField] private GameObject parent;
     
-    private float minX = -1.6f, maxX = 1.6f;
+    public float minX = -1.6f;
+    public float maxX = 1.6f;
+
     private bool isDragging = false;
     private float yFixed;
+    private float dragOffsetX;
 
     void Start()
     {
@@ -18,14 +22,26 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // 클릭 시작
+        #if UNITY_EDITOR || UNITY_STANDALONE
+            HandleMouseInput();
+        #elif UNITY_ANDROID || UNITY_IOS
+            HandleTouchInput();
+        #endif
+    }
+
+    void HandleMouseInput()
+    {
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return;
+            
             preview.SetActive(true);
+            
+            Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             isDragging = true;
         }
 
-        // 마우스 누르고 있을 때 계속 이동
         if (isDragging && Input.GetMouseButton(0))
         {
             Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -34,12 +50,50 @@ public class GameManager : MonoBehaviour
             preview.transform.position = new Vector3(clampedX, yFixed, preview.transform.position.z);
         }
 
-        // 클릭 해제 시 드래그 종료
         if (Input.GetMouseButtonUp(0))
         {
+            if(!isDragging) return;
             preview.SetActive(false);
             Instantiate(fruit, preview.transform.position, preview.transform.rotation, parent.transform);
             isDragging = false;
+        }
+    }
+
+    void HandleTouchInput()
+    {
+        if (Input.touchCount == 0)
+            return;
+
+        Touch touch = Input.GetTouch(0);
+
+        // UI 위에 있는지 확인
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+            return;
+
+        Vector2 touchWorld = Camera.main.ScreenToWorldPoint(touch.position);
+
+        switch (touch.phase)
+        {
+            case TouchPhase.Began:
+                preview.SetActive(true);
+                isDragging = true;
+                break;
+
+            case TouchPhase.Moved:
+            case TouchPhase.Stationary:
+                if (isDragging)
+                {
+                    float clampedX = Mathf.Clamp(touchWorld.x, minX, maxX);
+                    preview.transform.position = new Vector3(clampedX, yFixed, preview.transform.position.z);
+                }
+                break;
+
+            case TouchPhase.Ended:
+            case TouchPhase.Canceled:
+                preview.SetActive(false);
+                Instantiate(fruit, preview.transform.position, preview.transform.rotation, parent.transform);
+                isDragging = false;
+                break;
         }
     }
 }
