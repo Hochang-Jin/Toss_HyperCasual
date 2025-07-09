@@ -19,7 +19,6 @@ public class Fruits : MonoBehaviour
     private void Awake()
     {
         fruitRenderer = GetComponent<SpriteRenderer>();
-        Debug.Log(fruitRenderer);
         fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
     }
 
@@ -41,6 +40,6 @@ public class Fruits : MonoBehaviour
         this.type = fruitType;
         this.tag = this.type.ToString();
         fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
-        this.transform.localScale *= Mathf.Pow(1.2f, (float)this.type + 1f );
+        this.transform.localScale *= Mathf.Pow(1.2f, (float)this.type );
     }
 }

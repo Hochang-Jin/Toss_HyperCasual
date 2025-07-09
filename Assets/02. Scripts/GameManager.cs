@@ -61,8 +61,6 @@ public class GameManager : MonoBehaviour
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return;
             
-            preview.SetActive(true);
-            
             Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             isDragging = true;
         }
@@ -132,6 +130,8 @@ public class GameManager : MonoBehaviour
     {
         previewRenderer.sprite = fruitSprites[(int)fruitType];
         yield return new WaitForSeconds(0.1f);
+        float scale = 0.5f * Mathf.Pow(1.2f, (float)fruitType);
+        preview.transform.localScale = new Vector2(scale, scale);
         preview.SetActive(true);
     }
 }
