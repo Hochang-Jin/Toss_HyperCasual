@@ -1,11 +1,20 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    // singleton 구현
+    public static GameManager Instance { get; private set; }
+    
     public GameObject preview;
+    public SpriteRenderer previewRenderer;
     [SerializeField] private GameObject fruit;
     [SerializeField] private GameObject parent;
+    
+    public Sprite[] fruitSprites;
     
     public float minX = -1.6f;
     public float maxX = 1.6f;
@@ -13,6 +22,22 @@ public class GameManager : MonoBehaviour
     private bool isDragging = false;
     private float yFixed;
     private float dragOffsetX;
+
+    private Fruits.FruitType fruitType;
+
+    private void Awake()
+    {
+        // singleton 
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -54,7 +79,13 @@ public class GameManager : MonoBehaviour
         {
             if(!isDragging) return;
             preview.SetActive(false);
-            Instantiate(fruit, preview.transform.position, preview.transform.rotation, parent.transform);
+            
+            GameObject fruitObj = Instantiate(fruit, preview.transform.position, preview.transform.rotation, parent.transform);
+            fruitObj.GetComponent<Fruits>().SetFruit(fruitType);
+            fruitType = (Fruits.FruitType)Random.Range(0, 3);
+
+            StartCoroutine(ChangeSpriteRoutine());
+            
             isDragging = false;
         }
     }
@@ -95,5 +126,12 @@ public class GameManager : MonoBehaviour
                 isDragging = false;
                 break;
         }
+    }
+
+    IEnumerator ChangeSpriteRoutine()
+    {
+        previewRenderer.sprite = fruitSprites[(int)fruitType];
+        yield return new WaitForSeconds(0.1f);
+        preview.SetActive(true);
     }
 }

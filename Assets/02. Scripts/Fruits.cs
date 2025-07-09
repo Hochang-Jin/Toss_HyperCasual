@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Fruits : MonoBehaviour
 {
-    [SerializeField] Sprite[] fruits;
     SpriteRenderer fruitRenderer;
 
     public enum FruitType
@@ -17,10 +16,11 @@ public class Fruits : MonoBehaviour
     }
     public FruitType type;
 
-    private void Start()
+    private void Awake()
     {
         fruitRenderer = GetComponent<SpriteRenderer>();
-        fruitRenderer.sprite = fruits[(int)type];
+        Debug.Log(fruitRenderer);
+        fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -32,7 +32,7 @@ public class Fruits : MonoBehaviour
             this.transform.localScale *= 1.2f;
             this.type += 1;
             this.tag = this.type.ToString();
-            fruitRenderer.sprite = fruits[(int)type];
+            fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
         }
     }
 
@@ -40,7 +40,7 @@ public class Fruits : MonoBehaviour
     {
         this.type = fruitType;
         this.tag = this.type.ToString();
-        fruitRenderer.sprite = fruits[(int)fruitType];
+        fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
         this.transform.localScale *= Mathf.Pow(1.2f, (float)this.type + 1f );
     }
 }

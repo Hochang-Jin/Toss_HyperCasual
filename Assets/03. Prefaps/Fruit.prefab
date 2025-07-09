@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7517859767794841137}
   m_Layer: 6
   m_Name: Fruit
-  m_TagString: Strawberry
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,11 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d118791aa2e1495681a5eb08937d4476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruits:
-  - {fileID: -1337796959, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: 1847463989, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: 1218446674, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: 519684443, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: 986310495, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: -1595615294, guid: a03c2610221b14940b818fb271b448fa, type: 3}
   type: 0
