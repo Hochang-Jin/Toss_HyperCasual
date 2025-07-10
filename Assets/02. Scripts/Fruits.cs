@@ -28,7 +28,7 @@ public class Fruits : MonoBehaviour
         {
             if(this.type == FruitType.Watermelon) return; // 최종 단계는 합쳐지지 않음
             
-            GameManager.Instance.count++;
+            GameManager.Instance.count += 2 * ((int)this.type + 1);
             other.gameObject.SetActive(false); 
             this.transform.localScale *= 1.2f;
             this.type += 1;

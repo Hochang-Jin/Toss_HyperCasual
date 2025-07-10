@@ -5,7 +5,7 @@ public class GameOver : MonoBehaviour
     public LayerMask fruitLayer;
     public float maxDistance = 7.6f;
 
-    [SerializeField] private float timer;
+    public float timer;
     
     
     void Update()
