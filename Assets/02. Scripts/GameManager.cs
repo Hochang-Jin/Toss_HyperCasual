@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     // singleton 구현
     public static GameManager Instance { get; private set; }
+
+    public int count = 0;
     
     public GameObject preview;
     public SpriteRenderer previewRenderer;

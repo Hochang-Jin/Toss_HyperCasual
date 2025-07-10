@@ -12,7 +12,7 @@ public class Board : MonoBehaviour
 
     IEnumerator RotateRoutine(bool isLeft)
     {
-        float rotation = isLeft ? -90 : 90;
+        float rotation = isLeft ? 90 : -90;
         float timer = 0f;
         
         Quaternion startRot = transform.rotation;
