@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -13,8 +15,10 @@ public class GameManager : MonoBehaviour
     
     public GameObject preview;
     public SpriteRenderer previewRenderer;
-    [SerializeField] private GameObject fruit;
+    public GameObject fruit;
     [SerializeField] private GameObject parent;
+    
+    public Button restartButton;
     
     public Sprite[] fruitSprites;
     
@@ -39,12 +43,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        restartButton.onClick.AddListener(Reset);
     }
 
     void Start()
     {
         if (preview != null)
             yFixed = preview.transform.position.y;
+        
     }
 
     void Update()
@@ -135,5 +141,14 @@ public class GameManager : MonoBehaviour
         float scale = 0.5f * Mathf.Pow(1.2f, (float)fruitType);
         preview.transform.localScale = new Vector2(scale, scale);
         preview.SetActive(true);
+    }
+
+    private void Reset()
+    {
+        count = 0;
+        isDragging = false;
+        Start();
+        UIManager.Instance.UIReset();
+        Time.timeScale = 1f;
     }
 }

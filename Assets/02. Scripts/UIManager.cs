@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     
     public GameObject gameOverObj;
     private GameOver gameOver;
+    public TextMeshProUGUI gameOverScore;
     
     public Animator gameOverAnimator;
     
@@ -54,8 +55,17 @@ public class UIManager : MonoBehaviour
     public void GameOverUI()
     {
         playingUI.SetActive(false);
-        gameOverAnimator.SetTrigger("GameOver");
         gameOverUI.SetActive(true);
+        gameOverScore.text = GameManager.Instance.count.ToString();
+        gameOverAnimator.SetTrigger("GameOver");
     }
-    
+
+    public void UIReset()
+    {
+        playingUI.SetActive(true);
+        gameOverUI.SetActive(false);
+        gameOver.timer = 0;
+        gameOver.isGameOver = false;
+        
+    }
 }

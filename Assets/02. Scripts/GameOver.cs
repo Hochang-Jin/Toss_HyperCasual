@@ -7,7 +7,7 @@ public class GameOver : MonoBehaviour
     public float maxDistance = 7.6f;
 
     public float timer;
-    private bool isGameOver = false;
+    public bool isGameOver = false;
     
     void Update()
     {

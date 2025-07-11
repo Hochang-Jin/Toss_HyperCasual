@@ -1291,6 +1291,7 @@ MonoBehaviour:
   previewRenderer: {fileID: 947056217}
   fruit: {fileID: 4529572900175838937, guid: acbda8c5253e065468e11442063fcd4f, type: 3}
   parent: {fileID: 1800607823}
+  restartButton: {fileID: 1100252487}
   fruitSprites:
   - {fileID: -1337796959, guid: a03c2610221b14940b818fb271b448fa, type: 3}
   - {fileID: 1847463989, guid: a03c2610221b14940b818fb271b448fa, type: 3}
@@ -2075,6 +2076,7 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 7.6
   timer: 0
+  isGameOver: 0
 --- !u!1 &1601188273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,6 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverObj: {fileID: 1500392214}
+  gameOverScore: {fileID: 1794159320}
   gameOverAnimator: {fileID: 1601188275}
   gameOverUI: {fileID: 1601188273}
   playingUI: {fileID: 780168215}
