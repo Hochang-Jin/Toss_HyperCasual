@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class UIManager : MonoBehaviour
     
     public GameObject gameOverObj;
     private GameOver gameOver;
+    
+    public Animator gameOverAnimator;
+    
+    public GameObject gameOverUI;
+    public GameObject playingUI;
+    
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
     
@@ -44,8 +51,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // private IEnumerator GameoverTimerRoutine()
-    // {
-    //     
-    // }
+    public void GameOverUI()
+    {
+        playingUI.SetActive(false);
+        gameOverAnimator.SetTrigger("GameOver");
+        gameOverUI.SetActive(true);
+    }
+    
 }

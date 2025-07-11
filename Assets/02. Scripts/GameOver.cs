@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class GameOver : MonoBehaviour
     public float maxDistance = 7.6f;
 
     public float timer;
-    
+    private bool isGameOver = false;
     
     void Update()
     {
@@ -38,7 +39,9 @@ public class GameOver : MonoBehaviour
 
     public void Gameover()
     {
-        Debug.Log("게임오버");
+        if(isGameOver) return;
+        isGameOver = true;
+        UIManager.Instance.GameOverUI();
     }
 }
 
