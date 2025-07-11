@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public GameObject fruit;
     [SerializeField] private GameObject parent;
     
+    public ObjectPool objectPool;
+    
     public Button restartButton;
     
     public Sprite[] fruitSprites;
@@ -86,8 +88,11 @@ public class GameManager : MonoBehaviour
             if(!isDragging) return;
             preview.SetActive(false);
             
-            GameObject fruitObj = Instantiate(fruit, preview.transform.position, preview.transform.rotation, parent.transform);
-            fruitObj.GetComponent<Fruits>().SetFruit(fruitType);
+            // GameObject fruitObj = Instantiate(fruit, preview.transform.position, preview.transform.rotation, parent.transform);
+            // fruitObj.GetComponent<Fruits>().SetFruit(fruitType);
+            
+            FruitCreate();
+            
             fruitType = (Fruits.FruitType)Random.Range(0, 3);
 
             StartCoroutine(ChangeSpriteRoutine());
@@ -134,6 +139,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void FruitCreate()
+    {
+        GameObject fruitObj = objectPool.DequeueObject();
+        fruitObj.transform.position = preview.transform.position;
+        fruitObj.transform.rotation = preview.transform.rotation;
+        fruitObj.GetComponent<Fruits>().SetFruit(fruitType);
+    }
+
     IEnumerator ChangeSpriteRoutine()
     {
         previewRenderer.sprite = fruitSprites[(int)fruitType];
@@ -149,6 +162,7 @@ public class GameManager : MonoBehaviour
         isDragging = false;
         Start();
         UIManager.Instance.UIReset();
+        objectPool.PoolReset();
         Time.timeScale = 1f;
     }
 }

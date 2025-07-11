@@ -4,6 +4,8 @@ using UnityEngine;
 public class Fruits : MonoBehaviour
 {
     SpriteRenderer fruitRenderer;
+    private ObjectPool objectPool;
+    private Vector3 initScale;
 
     public enum FruitType
     {
@@ -20,6 +22,13 @@ public class Fruits : MonoBehaviour
     {
         fruitRenderer = GetComponent<SpriteRenderer>();
         fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
+        objectPool = FindFirstObjectByType<ObjectPool>();
+        initScale = fruitRenderer.transform.localScale;
+    }
+
+    private void OnEnable()
+    {
+        transform.localScale = initScale;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -29,7 +38,8 @@ public class Fruits : MonoBehaviour
             if(this.type == FruitType.Watermelon) return; // 최종 단계는 합쳐지지 않음
             
             GameManager.Instance.count += 2 * ((int)this.type + 1);
-            other.gameObject.SetActive(false); 
+            // other.gameObject.SetActive(false);
+            objectPool.EnqueueObject(other.gameObject);
             this.transform.localScale *= 1.2f;
             this.type += 1;
             this.tag = this.type.ToString();

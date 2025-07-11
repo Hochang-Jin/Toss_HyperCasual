@@ -1291,6 +1291,7 @@ MonoBehaviour:
   previewRenderer: {fileID: 947056217}
   fruit: {fileID: 4529572900175838937, guid: acbda8c5253e065468e11442063fcd4f, type: 3}
   parent: {fileID: 1800607823}
+  objectPool: {fileID: 1800607829}
   restartButton: {fileID: 1100252487}
   fruitSprites:
   - {fileID: -1337796959, guid: a03c2610221b14940b818fb271b448fa, type: 3}
@@ -2519,6 +2520,7 @@ GameObject:
   - component: {fileID: 1800607824}
   - component: {fileID: 1800607827}
   - component: {fileID: 1800607828}
+  - component: {fileID: 1800607829}
   m_Layer: 0
   m_Name: Board
   m_TagString: Edge
@@ -2655,6 +2657,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTime: 0.3
+--- !u!114 &1800607829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800607823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad26a3101352d74b9740c8674c772c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruit: {fileID: 4529572900175838937, guid: acbda8c5253e065468e11442063fcd4f, type: 3}
+  parent: {fileID: 1800607823}
 --- !u!1 &1929799476
 GameObject:
   m_ObjectHideFlags: 0

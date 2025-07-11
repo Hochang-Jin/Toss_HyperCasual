@@ -16,7 +16,7 @@ public class ObjectPool : MonoBehaviour
 
     public void CreateObject()
     {
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 30; i++)
         {
             GameObject go = Instantiate(fruit, parent.transform);
             EnqueueObject(go);
@@ -37,6 +37,15 @@ public class ObjectPool : MonoBehaviour
         GameObject go = objectPool.Dequeue();
         go.SetActive(true);
         return go;
+    }
+
+    public void PoolReset()
+    {
+        Fruits[] children = parent.GetComponentsInChildren<Fruits>();
+        foreach (var vChild in children)
+        {
+            EnqueueObject(vChild.gameObject);
+        }
     }
 }
 
