@@ -37,8 +37,9 @@ public class Fruits : MonoBehaviour
         {
             if(this.type == FruitType.Watermelon) return; // 최종 단계는 합쳐지지 않음
             
+            SoundManager.Instance.MergeSound();
+            // 합치는 기능
             GameManager.Instance.count += 2 * ((int)this.type + 1);
-            // other.gameObject.SetActive(false);
             objectPool.EnqueueObject(other.gameObject);
             this.transform.localScale *= 1.2f;
             this.type += 1;

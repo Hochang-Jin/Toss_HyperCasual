@@ -8,6 +8,8 @@ public class GameOver : MonoBehaviour
 
     public float timer;
     public bool isGameOver = false;
+
+    private bool isTimerON;
     
     void Update()
     {
@@ -20,15 +22,22 @@ public class GameOver : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= 3f)
             {
+                SoundManager.Instance.TimerOff();
                 Gameover();
+                isTimerON = false;
             }
-                
+            if(isTimerON) return;
+            isTimerON = true;
+            SoundManager.Instance.TimerOn();
         }
         else
         {
             if (timer <= 0)
             {
                 timer = 0;
+                if (!isTimerON) return;
+                isTimerON = false;
+                SoundManager.Instance.TimerOff();
             }
             else
             {

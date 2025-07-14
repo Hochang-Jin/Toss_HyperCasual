@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
             // fruitObj.GetComponent<Fruits>().SetFruit(fruitType);
             
             FruitCreate();
+            SoundManager.Instance.DropSound();
             
             fruitType = (Fruits.FruitType)Random.Range(0, 3);
 
