@@ -53,6 +53,8 @@ public class GameOver : MonoBehaviour
         isGameOver = true;
         UIManager.Instance.GameOverUI();
         SoundManager.Instance.BGMOff();
+        GameManager.Instance.preview.SetActive(false);
+        GameManager.Instance.preview.transform.position = new Vector3(0, 1.26f, 0);
     }
 }
 
