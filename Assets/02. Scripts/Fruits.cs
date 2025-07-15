@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Fruits : MonoBehaviour
@@ -31,6 +32,7 @@ public class Fruits : MonoBehaviour
     private void OnEnable()
     {
         transform.localScale = initScale;
+        StartCoroutine(ColliderLatency());
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -58,5 +60,12 @@ public class Fruits : MonoBehaviour
         this.tag = this.type.ToString();
         fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
         this.transform.localScale *= Mathf.Pow(1.2f, (float)this.type );
+    }
+
+    private IEnumerator ColliderLatency()
+    {
+        col.enabled = false;
+        yield return new WaitForSeconds(0.2f);
+        col.enabled = true;
     }
 }

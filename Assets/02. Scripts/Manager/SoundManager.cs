@@ -51,6 +51,11 @@ public class SoundManager : MonoBehaviour
         backgroundSource.Play();
     }
 
+    public void BGMOff()
+    {
+        backgroundSource.Stop();
+    }
+    
     public void TimerOn()
     {
         timerSource.clip = timerSound;

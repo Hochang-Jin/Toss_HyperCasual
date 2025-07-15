@@ -52,6 +52,7 @@ public class GameOver : MonoBehaviour
         if(isGameOver) return;
         isGameOver = true;
         UIManager.Instance.GameOverUI();
+        SoundManager.Instance.BGMOff();
     }
 }
 

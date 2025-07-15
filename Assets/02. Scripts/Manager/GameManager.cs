@@ -162,5 +162,6 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.UIReset();
         objectPool.PoolReset();
         Time.timeScale = 1f;
+        SoundManager.Instance.ResetBGM();
     }
 }
