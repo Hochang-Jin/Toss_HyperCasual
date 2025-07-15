@@ -1,13 +1,21 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour
 {
     [SerializeField] private float targetTime = 0.3f;
-    
+    public CoroutineQueue coroutines;
+
+    private void Start()
+    {
+        coroutines = gameObject.GetComponent<CoroutineQueue>();
+    }
+
     public void Rotation(bool isLeft)
     {
-        StartCoroutine(RotateRoutine(isLeft));
+        coroutines.Enqueue(RotateRoutine(isLeft));
     }
 
     IEnumerator RotateRoutine(bool isLeft)
