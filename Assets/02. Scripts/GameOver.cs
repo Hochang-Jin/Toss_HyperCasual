@@ -26,6 +26,7 @@ public class GameOver : MonoBehaviour
                 Gameover();
                 isTimerON = false;
             }
+            if(isGameOver) return;
             if(isTimerON) return;
             isTimerON = true;
             SoundManager.Instance.TimerOn();
