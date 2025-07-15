@@ -88,9 +88,6 @@ public class GameManager : MonoBehaviour
             if(!isDragging) return;
             preview.SetActive(false);
             
-            // GameObject fruitObj = Instantiate(fruit, preview.transform.position, preview.transform.rotation, parent.transform);
-            // fruitObj.GetComponent<Fruits>().SetFruit(fruitType);
-            
             FruitCreate();
             SoundManager.Instance.DropSound();
             

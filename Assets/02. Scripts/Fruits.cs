@@ -6,6 +6,7 @@ public class Fruits : MonoBehaviour
     SpriteRenderer fruitRenderer;
     private ObjectPool objectPool;
     private Vector3 initScale;
+    private Collider2D col;
 
     public enum FruitType
     {
@@ -24,6 +25,7 @@ public class Fruits : MonoBehaviour
         fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
         objectPool = FindFirstObjectByType<ObjectPool>();
         initScale = fruitRenderer.transform.localScale;
+        col = GetComponent<Collider2D>();
     }
 
     private void OnEnable()
@@ -45,6 +47,8 @@ public class Fruits : MonoBehaviour
             this.type += 1;
             this.tag = this.type.ToString();
             fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
+            col.enabled = false;
+            col.enabled = true;
         }
     }
 
