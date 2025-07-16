@@ -1141,12 +1141,14 @@ MonoBehaviour:
   objectPool: {fileID: 1800607829}
   restartButton: {fileID: 1100252487}
   fruitSprites:
-  - {fileID: -1337796959, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: 1847463989, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: 1218446674, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: 519684443, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: 986310495, guid: a03c2610221b14940b818fb271b448fa, type: 3}
-  - {fileID: -1595615294, guid: a03c2610221b14940b818fb271b448fa, type: 3}
+  - {fileID: 1227010756, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
+  - {fileID: 2063686650, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
+  - {fileID: -1399683068, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
+  - {fileID: -419237176, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
+  - {fileID: -1042665424, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
+  - {fileID: -1583366668, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
+  - {fileID: 1979438802, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
+  - {fileID: -101154186, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
   minX: -1.6
   maxX: 1.6
 --- !u!4 &898764485
@@ -1240,7 +1242,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1337796959, guid: a03c2610221b14940b818fb271b448fa, type: 3}
+  m_Sprite: {fileID: 1227010756, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.4117647}
   m_FlipX: 0
   m_FlipY: 0

@@ -12,6 +12,8 @@ TagManager:
   - Pear
   - Pineapple
   - Watermelon
+  - Lemon
+  - Cherry
   layers:
   - Default
   - TransparentFX

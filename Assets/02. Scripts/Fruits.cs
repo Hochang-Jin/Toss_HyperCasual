@@ -11,8 +11,10 @@ public class Fruits : MonoBehaviour
 
     public enum FruitType
     {
+        Cherry,
         Strawberry,
         Apple,
+        Lemon,
         Orange,
         Pear,
         Pineapple,

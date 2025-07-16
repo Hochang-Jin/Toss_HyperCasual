@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
             FruitCreate();
             SoundManager.Instance.DropSound();
             
-            fruitType = (Fruits.FruitType)Random.Range(0, 3);
+            RandomType();
 
             StartCoroutine(ChangeSpriteRoutine());
             
@@ -137,6 +137,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void RandomType()
+    {
+        int ranVal = Random.Range(0, 10);
+        if (ranVal < 6)
+            ranVal = 0;
+        else if (ranVal < 9)
+            ranVal = 1;
+        else
+            ranVal = 2;
+        fruitType = (Fruits.FruitType)ranVal;
+    }
     public void FruitCreate()
     {
         GameObject fruitObj = objectPool.DequeueObject();
