@@ -105,37 +105,43 @@ public class GameManager : MonoBehaviour
             return;
 
         Touch touch = Input.GetTouch(0);
-
-        // UI 위에 있는지 확인
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
-            return;
-
         Vector2 touchWorld = Camera.main.ScreenToWorldPoint(touch.position);
 
         switch (touch.phase)
         {
             case TouchPhase.Began:
-                preview.SetActive(true);
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                    return;
+
                 isDragging = true;
+                preview.SetActive(true);
                 break;
 
             case TouchPhase.Moved:
             case TouchPhase.Stationary:
-                if (isDragging)
-                {
-                    float clampedX = Mathf.Clamp(touchWorld.x, minX, maxX);
-                    preview.transform.position = new Vector3(clampedX, yFixed, preview.transform.position.z);
-                }
+                if (!isDragging)
+                    return;
+
+                float clampedX = Mathf.Clamp(touchWorld.x, minX, maxX);
+                preview.transform.position = new Vector3(clampedX, yFixed, preview.transform.position.z);
                 break;
 
             case TouchPhase.Ended:
             case TouchPhase.Canceled:
-                preview.SetActive(false);
-                Instantiate(fruit, preview.transform.position, preview.transform.rotation, parent.transform);
+                if (!isDragging)
+                    return;
+
                 isDragging = false;
+                preview.SetActive(false);
+
+                FruitCreate();
+                SoundManager.Instance.DropSound();
+                RandomType();
+                StartCoroutine(ChangeSpriteRoutine());
                 break;
         }
     }
+
 
     private void RandomType()
     {
@@ -160,7 +166,7 @@ public class GameManager : MonoBehaviour
     {
         previewRenderer.sprite = fruitSprites[(int)fruitType];
         yield return new WaitForSeconds(0.1f);
-        float scale = 0.5f * Mathf.Pow(1.2f, (float)fruitType);
+        float scale = 0.608f * Mathf.Pow(1.2f, (float)fruitType);
         preview.transform.localScale = new Vector2(scale, scale);
         preview.SetActive(true);
     }

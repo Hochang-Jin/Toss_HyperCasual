@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     
     public AudioClip backgroundMusic;
     public AudioClip timerSound;
+    public AudioClip reverseTimerSound;
     public AudioClip dropSound;
     public AudioClip mergeSound;
     
@@ -54,11 +55,18 @@ public class SoundManager : MonoBehaviour
     public void BGMOff()
     {
         backgroundSource.Stop();
+        timerSource.Stop();
     }
     
     public void TimerOn()
     {
         timerSource.clip = timerSound;
+        timerSource.Play();
+    }
+
+    public void ReverseTimer()
+    {
+        timerSource.clip = reverseTimerSound;
         timerSource.Play();
     }
 
