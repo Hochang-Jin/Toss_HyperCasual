@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         #if UNITY_EDITOR || UNITY_STANDALONE
             HandleMouseInput();
-        #elif UNITY_ANDROID || UNITY_IOS
+        #elif UNITY_ANDROID || UNITY_IOS || UNITY_WEBGL
             HandleTouchInput();
         #endif
     }
