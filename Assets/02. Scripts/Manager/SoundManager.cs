@@ -44,6 +44,7 @@ public class SoundManager : MonoBehaviour
         float alpha = backgroundSource.mute ? 1f : 0.3f;
         muteImage.color = new Color(1, 1, 1, alpha);
         backgroundSource.mute = !backgroundSource.mute;
+        timerSource.mute = !timerSource.mute;
     }
 
     public void ResetBGM()

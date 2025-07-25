@@ -89,10 +89,7 @@ public class GameManager : MonoBehaviour
             preview.SetActive(false);
             
             FruitCreate();
-            SoundManager.Instance.DropSound();
-            
             RandomType();
-
             StartCoroutine(ChangeSpriteRoutine());
             
             isDragging = false;
@@ -135,7 +132,6 @@ public class GameManager : MonoBehaviour
                 preview.SetActive(false);
 
                 FruitCreate();
-                SoundManager.Instance.DropSound();
                 RandomType();
                 StartCoroutine(ChangeSpriteRoutine());
                 break;
@@ -160,6 +156,7 @@ public class GameManager : MonoBehaviour
         fruitObj.transform.position = preview.transform.position;
         fruitObj.transform.rotation = preview.transform.rotation;
         fruitObj.GetComponent<Fruits>().SetFruit(fruitType);
+        SoundManager.Instance.DropSound();
     }
 
     IEnumerator ChangeSpriteRoutine()
