@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     
     public AudioSource backgroundSource;
     public AudioSource timerSource;
+    public AudioSource effectSource;
     
     public AudioClip backgroundMusic;
     public AudioClip timerSound;
@@ -78,11 +79,11 @@ public class SoundManager : MonoBehaviour
     
     public void DropSound()
     {
-        backgroundSource.PlayOneShot(dropSound);
+        effectSource.PlayOneShot(dropSound);
     }
 
     public void MergeSound()
     {
-        backgroundSource.PlayOneShot(mergeSound);
+        effectSource.PlayOneShot(mergeSound);
     }
 }

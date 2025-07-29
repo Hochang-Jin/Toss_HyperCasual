@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -107,7 +108,7 @@ public class GameManager : MonoBehaviour
         switch (touch.phase)
         {
             case TouchPhase.Began:
-                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                if (IsPointerOverUIObject(touch.position))
                     return;
 
                 isDragging = true;
@@ -138,7 +139,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// WEBGL UI 터치 막기 위한 용도
+    /// </summary>
+    /// <param name="screenPosition"></param>
+    /// <returns></returns>
+    bool IsPointerOverUIObject(Vector2 screenPosition)
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = screenPosition;
 
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+        return results.Count > 0;
+    }
+
+    
+    
     private void RandomType()
     {
         int ranVal = Random.Range(0, 10);
