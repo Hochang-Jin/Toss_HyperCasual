@@ -20,11 +20,13 @@ public class GameOver : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(origin, direction, maxDistance, fruitLayer);
         if (hit.collider != null)
         {
+            if(isGameOver) return;
             timer += Time.deltaTime;
             if (timer >= 3f)
             {
                 SoundManager.Instance.TimerOff();
                 Gameover();
+                SoundManager.Instance.EndingSound();
                 isTimerON = false;
                 isReverseTimer = false;
             }

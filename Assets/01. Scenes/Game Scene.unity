@@ -2900,6 +2900,7 @@ MonoBehaviour:
   timerSource: {fileID: 2141219157}
   effectSource: {fileID: 2141219161}
   backgroundMusic: {fileID: 8300000, guid: 475f4837af487ce4a9e68bb227455e4c, type: 3}
+  endingMusic: {fileID: 8300000, guid: 90eae78e8ce85a849b5b0ca11b2de641, type: 3}
   timerSound: {fileID: 8300000, guid: 7ad95453a23caa04881c61d8069a35b0, type: 3}
   reverseTimerSound: {fileID: 8300000, guid: 3f9da69aa2efcd94f82ef16f6a27332f, type: 3}
   dropSound: {fileID: 8300000, guid: efa95f73191f17b4abf39ff440f03a11, type: 3}
@@ -2933,7 +2934,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.682
   m_Pitch: 1
   Loop: 0
   Mute: 0

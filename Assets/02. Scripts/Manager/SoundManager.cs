@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource effectSource;
     
     public AudioClip backgroundMusic;
+    public AudioClip endingMusic;
     public AudioClip timerSound;
     public AudioClip reverseTimerSound;
     public AudioClip dropSound;
@@ -85,5 +86,11 @@ public class SoundManager : MonoBehaviour
     public void MergeSound()
     {
         effectSource.PlayOneShot(mergeSound);
+    }
+
+    public void EndingSound()
+    {
+        backgroundSource.clip = endingMusic;
+        backgroundSource.Play();
     }
 }
