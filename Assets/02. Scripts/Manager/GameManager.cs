@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject preview;
     public SpriteRenderer previewRenderer;
     public GameObject fruit;
-    [SerializeField] private GameObject parent;
+    [FormerlySerializedAs("parent")] [SerializeField] private GameObject board;
     
     public ObjectPool objectPool;
     
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             if(!isDragging) return;
+            if (board.transform.rotation.eulerAngles.z % 90 != 0) return;
             preview.SetActive(false);
             
             FruitCreate();
@@ -128,6 +130,9 @@ public class GameManager : MonoBehaviour
             case TouchPhase.Canceled:
                 if (!isDragging)
                     return;
+                
+                // 회전이 끝나지 않았으면 과일을 생성하지 않음
+                if (board.transform.rotation.eulerAngles.z % 90 != 0) return;
 
                 isDragging = false;
                 preview.SetActive(false);

@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
     
     public Button muteButton;
     private Image muteImage;
+    public Sprite[] muteImages;
 
     private void Awake()
     {
@@ -43,8 +44,8 @@ public class SoundManager : MonoBehaviour
 
     private void MuteBGM()
     {
-        float alpha = backgroundSource.mute ? 1f : 0.3f;
-        muteImage.color = new Color(1, 1, 1, alpha);
+        int idx = backgroundSource.mute ? 0 : 1;
+        muteImage.sprite = muteImages[idx];
         backgroundSource.mute = !backgroundSource.mute;
         timerSource.mute = !timerSource.mute;
     }

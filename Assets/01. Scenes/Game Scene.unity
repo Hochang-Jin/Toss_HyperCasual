@@ -643,7 +643,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 50, y: 50}
-  m_SizeDelta: {x: 300, y: 300}
+  m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &635478456
 MonoBehaviour:
@@ -721,7 +721,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd4b1e5bbe89e8f4db7bf628facb41f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea9e80347b7fe40b0b4043ba69e70d59, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -775,7 +775,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -50, y: 50}
-  m_SizeDelta: {x: 300, y: 300}
+  m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &649077717
 MonoBehaviour:
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db78b5e2a386be44cbb2c213c19acc9a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 009bf084c5aaa402f850ab6ed59f95b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 11db8887671022647b53d742c029634d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f955fcc28f53f4525addebf247f6419b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1138,6 +1138,7 @@ MonoBehaviour:
   previewRenderer: {fileID: 947056217}
   fruit: {fileID: 4529572900175838937, guid: acbda8c5253e065468e11442063fcd4f, type: 3}
   parent: {fileID: 1800607823}
+  board: {fileID: 1800607823}
   objectPool: {fileID: 1800607829}
   restartButton: {fileID: 1100252487}
   fruitSprites:
@@ -2906,6 +2907,9 @@ MonoBehaviour:
   dropSound: {fileID: 8300000, guid: efa95f73191f17b4abf39ff440f03a11, type: 3}
   mergeSound: {fileID: 8300000, guid: 373e03dd6d28d394091e8bc674445735, type: 3}
   muteButton: {fileID: 851283853}
+  muteImages:
+  - {fileID: 21300000, guid: 689f2ae1d1da341259d3e37068efeec6, type: 3}
+  - {fileID: 21300000, guid: 8e0763e5c599a4a8e8d33134086e8145, type: 3}
 --- !u!4 &2141219160
 Transform:
   m_ObjectHideFlags: 0
