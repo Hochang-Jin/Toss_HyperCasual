@@ -1137,19 +1137,20 @@ MonoBehaviour:
   preview: {fileID: 947056215}
   previewRenderer: {fileID: 947056217}
   fruit: {fileID: 4529572900175838937, guid: acbda8c5253e065468e11442063fcd4f, type: 3}
-  parent: {fileID: 1800607823}
   board: {fileID: 1800607823}
   objectPool: {fileID: 1800607829}
   restartButton: {fileID: 1100252487}
   fruitSprites:
-  - {fileID: 1227010756, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
-  - {fileID: 2063686650, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
-  - {fileID: -1399683068, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
-  - {fileID: -419237176, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
-  - {fileID: -1042665424, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
-  - {fileID: -1583366668, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
-  - {fileID: 1979438802, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
-  - {fileID: -101154186, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
+  - {fileID: 39828227323110329, guid: 08980369713ecae498a69cecff346e4e, type: 3}
+  - {fileID: 21300000, guid: 95ea7da3f2fdbec45a4dbfb659c8238c, type: 3}
+  - {fileID: 21300000, guid: d51bed82c43643b4ab950b89e5092b2e, type: 3}
+  - {fileID: -2277230467215431897, guid: 08980369713ecae498a69cecff346e4e, type: 3}
+  - {fileID: 1120665210743212723, guid: 08980369713ecae498a69cecff346e4e, type: 3}
+  - {fileID: -1581103141004884855, guid: 08980369713ecae498a69cecff346e4e, type: 3}
+  - {fileID: 7502442867536110650, guid: 08980369713ecae498a69cecff346e4e, type: 3}
+  - {fileID: -5400909659972323026, guid: 08980369713ecae498a69cecff346e4e, type: 3}
+  - {fileID: -8950669538380363422, guid: 08980369713ecae498a69cecff346e4e, type: 3}
+  - {fileID: 21300000, guid: eae53ed8c9f06154398bc723d27bfebe, type: 3}
   minX: -1.6
   maxX: 1.6
 --- !u!4 &898764485
@@ -1243,7 +1244,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 26
-  m_Sprite: {fileID: 1227010756, guid: aa122f1d70b11a9449de207983a92a89, type: 3}
+  m_Sprite: {fileID: 39828227323110329, guid: 08980369713ecae498a69cecff346e4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.4117647}
   m_FlipX: 0
   m_FlipY: 0
@@ -2484,7 +2485,7 @@ EdgeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.06
+  m_EdgeRadius: 0.03
   m_Points:
   - {x: -0.5, y: -0.5}
   - {x: -0.5, y: 0.5}

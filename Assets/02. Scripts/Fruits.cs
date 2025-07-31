@@ -11,14 +11,16 @@ public class Fruits : MonoBehaviour
 
     public enum FruitType
     {
-        Cherry,
-        Strawberry,
-        Apple,
-        Lemon,
-        Orange,
-        Pear,
-        Pineapple,
-        Watermelon
+        Tier1,
+        Tier2,
+        Tier3,
+        Tier4,
+        Tier5,
+        Tier6,
+        Tier7,
+        Tier8,
+        Tier9,
+        Tier10
     }
     public FruitType type;
 
@@ -41,7 +43,7 @@ public class Fruits : MonoBehaviour
     {
         if (other.gameObject.CompareTag(this.tag))
         {
-            if(this.type == FruitType.Watermelon) return; // 최종 단계는 합쳐지지 않음
+            if(this.type == FruitType.Tier10) return; // 최종 단계는 합쳐지지 않음
             
             SoundManager.Instance.MergeSound();
             // 합치는 기능
