@@ -8,6 +8,7 @@ public class Fruits : MonoBehaviour
     private ObjectPool objectPool;
     private Vector3 initScale;
     private Collider2D col;
+    public bool createFlag;
 
     public enum FruitType
     {
@@ -56,6 +57,9 @@ public class Fruits : MonoBehaviour
             col.enabled = false;
             col.enabled = true;
         }
+        if(!createFlag) return;
+        createFlag = false;
+        GameManager.Instance.AfterCreate();
     }
 
     public void SetFruit(FruitType fruitType)

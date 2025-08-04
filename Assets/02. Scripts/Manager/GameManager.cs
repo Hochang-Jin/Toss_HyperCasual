@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    #region 멤버 변수
     // singleton 구현
     public static GameManager Instance { get; private set; }
 
@@ -36,6 +37,10 @@ public class GameManager : MonoBehaviour
     private Fruits.FruitType curFruitType;
     public Fruits.FruitType nextFruitType;
 
+    public bool isCollision = true;
+    
+    #endregion
+    
     private void Awake()
     {
         // singleton 
@@ -72,6 +77,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return;
+            if (!isCollision)
                 return;
             
             Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -111,6 +118,8 @@ public class GameManager : MonoBehaviour
             case TouchPhase.Began:
                 if (IsPointerOverUIObject(touch.position))
                     return;
+                if (!isCollision)
+                    return;
 
                 isDragging = true;
                 preview.SetActive(true);
@@ -129,7 +138,6 @@ public class GameManager : MonoBehaviour
             case TouchPhase.Canceled:
                 if (!isDragging)
                     return;
-                
                 // 회전이 끝나지 않았으면 과일을 생성하지 않음
                 if (board.transform.rotation.eulerAngles.z % 90 != 0) return;
 
@@ -156,18 +164,22 @@ public class GameManager : MonoBehaviour
 
         return results.Count > 0;
     }
-
-    
     
     private void RandomType()
     {
         int ranVal = Random.Range(0, 10);
-        if (ranVal < 6)
+        if (ranVal < 1) // 0 (10%)
             ranVal = 0;
-        else if (ranVal < 9)
+        else if (ranVal < 3) // 1, 2 (20%)
             ranVal = 1;
-        else
+        else if (ranVal < 5) // 3, 4 (20%)
             ranVal = 2;
+        else if (ranVal < 7) // 5, 6 (20%)
+            ranVal = 3;
+        else if (ranVal < 9) // 7, 8 (20%)
+            ranVal = 4;
+        else // 9 (10%)
+            ranVal = 5;
 
         curFruitType = nextFruitType;
         nextFruitType = (Fruits.FruitType)ranVal;
@@ -179,12 +191,18 @@ public class GameManager : MonoBehaviour
         fruitObj.transform.position = preview.transform.position;
         fruitObj.transform.rotation = preview.transform.rotation;
         fruitObj.GetComponent<Fruits>().SetFruit(curFruitType);
+        fruitObj.GetComponent<Fruits>().createFlag = true;
         
         SoundManager.Instance.DropSound();
+        isCollision = false;
+    }
+
+    public void AfterCreate()
+    {
         RandomType();
         UIManager.Instance.NextFruit();
         StartCoroutine(ChangeSpriteRoutine());
-        
+        isCollision = true;
     }
 
     IEnumerator ChangeSpriteRoutine()
