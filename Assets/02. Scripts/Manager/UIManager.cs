@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
+
+    [SerializeField] private Image nextImg;
     
     private void Awake()
     {
@@ -67,5 +69,10 @@ public class UIManager : MonoBehaviour
         gameOver.timer = 0;
         gameOver.isGameOver = false;
         
+    }
+
+    public void NextFruit()
+    {
+        nextImg.sprite = GameManager.Instance.fruitSprites[(int)GameManager.Instance.nextFruitType];
     }
 }

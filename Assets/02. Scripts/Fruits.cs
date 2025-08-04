@@ -49,7 +49,7 @@ public class Fruits : MonoBehaviour
             // 합치는 기능
             GameManager.Instance.count += 2 * ((int)this.type + 1);
             objectPool.EnqueueObject(other.gameObject);
-            this.transform.localScale *= 1.2f;
+            this.transform.localScale *= 1.25f;
             this.type += 1;
             this.tag = this.type.ToString();
             fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
@@ -63,7 +63,7 @@ public class Fruits : MonoBehaviour
         this.type = fruitType;
         this.tag = this.type.ToString();
         fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
-        this.transform.localScale *= Mathf.Pow(1.2f, (float)this.type );
+        this.transform.localScale *= Mathf.Pow(1.25f, (float)this.type );
     }
 
     private IEnumerator ColliderLatency()

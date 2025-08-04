@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
     private float yFixed;
     private float dragOffsetX;
 
-    private Fruits.FruitType fruitType;
+    private Fruits.FruitType curFruitType;
+    public Fruits.FruitType nextFruitType;
 
     private void Awake()
     {
@@ -92,8 +93,6 @@ public class GameManager : MonoBehaviour
             preview.SetActive(false);
             
             FruitCreate();
-            RandomType();
-            StartCoroutine(ChangeSpriteRoutine());
             
             isDragging = false;
         }
@@ -138,8 +137,6 @@ public class GameManager : MonoBehaviour
                 preview.SetActive(false);
 
                 FruitCreate();
-                RandomType();
-                StartCoroutine(ChangeSpriteRoutine());
                 break;
         }
     }
@@ -171,22 +168,30 @@ public class GameManager : MonoBehaviour
             ranVal = 1;
         else
             ranVal = 2;
-        fruitType = (Fruits.FruitType)ranVal;
+
+        curFruitType = nextFruitType;
+        nextFruitType = (Fruits.FruitType)ranVal;
     }
+    
     public void FruitCreate()
     {
         GameObject fruitObj = objectPool.DequeueObject();
         fruitObj.transform.position = preview.transform.position;
         fruitObj.transform.rotation = preview.transform.rotation;
-        fruitObj.GetComponent<Fruits>().SetFruit(fruitType);
+        fruitObj.GetComponent<Fruits>().SetFruit(curFruitType);
+        
         SoundManager.Instance.DropSound();
+        RandomType();
+        UIManager.Instance.NextFruit();
+        StartCoroutine(ChangeSpriteRoutine());
+        
     }
 
     IEnumerator ChangeSpriteRoutine()
     {
-        previewRenderer.sprite = fruitSprites[(int)fruitType];
+        previewRenderer.sprite = fruitSprites[(int)curFruitType];
         yield return new WaitForSeconds(0.1f);
-        float scale = 0.608f * Mathf.Pow(1.2f, (float)fruitType);
+        float scale = 0.608f * Mathf.Pow(1.25f, (float)curFruitType);
         preview.transform.localScale = new Vector2(scale, scale);
         preview.SetActive(true);
     }
