@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverObj;
     private GameOver gameOver;
 
-    public int count = 0;
+    [FormerlySerializedAs("count")] public int score = 0;
     
     public GameObject preview;
     public Vector3 previewPosition;
@@ -223,9 +223,8 @@ public class GameManager : MonoBehaviour
 
     private void Reset()
     {
-        count = 0;
+        score = 0;
         isDragging = false;
-        // Start();
         preview.transform.position = previewPosition;
         UIManager.Instance.UIReset();
         objectPool.PoolReset();

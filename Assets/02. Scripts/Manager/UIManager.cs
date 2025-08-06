@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = GameManager.Instance.count.ToString();
+        scoreText.text = GameManager.Instance.score.ToString();
         if (gameOver.timer > 0)
         {
             timerText.gameObject.SetActive(true);
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
     {
         playingUI.SetActive(false);
         gameOverUI.SetActive(true);
-        gameOverScore.text = GameManager.Instance.count.ToString();
+        gameOverScore.text = GameManager.Instance.score.ToString();
         gameOverAnimator.SetTrigger("GameOver");
     }
 

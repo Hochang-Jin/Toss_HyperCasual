@@ -1647,7 +1647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverObj: {fileID: 1500392214}
-  count: 0
+  score: 0
   preview: {fileID: 947056215}
   previewPosition: {x: 0, y: 0, z: 0}
   previewRenderer: {fileID: 947056217}

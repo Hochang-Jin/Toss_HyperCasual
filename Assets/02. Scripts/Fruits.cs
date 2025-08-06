@@ -48,7 +48,7 @@ public class Fruits : MonoBehaviour
             
             SoundManager.Instance.MergeSound();
             // 합치는 기능
-            GameManager.Instance.count += 2 * ((int)this.type + 1);
+            GameManager.Instance.score += 2 * ((int)this.type + 1);
             objectPool.EnqueueObject(other.gameObject);
             this.transform.localScale *= powerRatio;
             this.type += 1;
