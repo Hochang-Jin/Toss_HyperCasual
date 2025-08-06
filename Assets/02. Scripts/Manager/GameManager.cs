@@ -13,10 +13,13 @@ public class GameManager : MonoBehaviour
     #region 멤버 변수
     // singleton 구현
     public static GameManager Instance { get; private set; }
+    public GameObject gameOverObj;
+    private GameOver gameOver;
 
     public int count = 0;
     
     public GameObject preview;
+    public Vector3 previewPosition;
     public SpriteRenderer previewRenderer;
     public GameObject fruit;
     [FormerlySerializedAs("parent")] [SerializeField] private GameObject board;
@@ -53,14 +56,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
         restartButton.onClick.AddListener(Reset);
+        previewPosition = preview.transform.localPosition;
+        gameOver = gameOverObj.GetComponent<GameOver>();
+
     }
 
     void Start()
     {
         if (preview != null)
             yFixed = preview.transform.position.y;
-        
     }
 
     void Update()
@@ -96,6 +102,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             if(!isDragging) return;
+            if(gameOver.isGameOver) return;
             if (board.transform.rotation.eulerAngles.z % 90 != 0) return;
             preview.SetActive(false);
             
@@ -136,8 +143,8 @@ public class GameManager : MonoBehaviour
 
             case TouchPhase.Ended:
             case TouchPhase.Canceled:
-                if (!isDragging)
-                    return;
+                if (!isDragging) return;
+                if(gameOver.isGameOver) return;
                 // 회전이 끝나지 않았으면 과일을 생성하지 않음
                 if (board.transform.rotation.eulerAngles.z % 90 != 0) return;
 
@@ -209,7 +216,7 @@ public class GameManager : MonoBehaviour
     {
         previewRenderer.sprite = fruitSprites[(int)curFruitType];
         yield return new WaitForSeconds(0.1f);
-        float scale = 0.608f * Mathf.Pow(1.25f, (float)curFruitType);
+        float scale = 0.608f * Mathf.Pow(Fruits.powerRatio, (float)curFruitType);
         preview.transform.localScale = new Vector2(scale, scale);
         preview.SetActive(true);
     }
@@ -218,7 +225,8 @@ public class GameManager : MonoBehaviour
     {
         count = 0;
         isDragging = false;
-        Start();
+        // Start();
+        preview.transform.position = previewPosition;
         UIManager.Instance.UIReset();
         objectPool.PoolReset();
         Time.timeScale = 1f;

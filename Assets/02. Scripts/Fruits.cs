@@ -9,6 +9,7 @@ public class Fruits : MonoBehaviour
     private Vector3 initScale;
     private Collider2D col;
     public bool createFlag;
+    public static float powerRatio = 1.225f;
 
     public enum FruitType
     {
@@ -20,8 +21,7 @@ public class Fruits : MonoBehaviour
         Tier6,
         Tier7,
         Tier8,
-        Tier9,
-        Tier10
+        Tier9
     }
     public FruitType type;
 
@@ -44,13 +44,13 @@ public class Fruits : MonoBehaviour
     {
         if (other.gameObject.CompareTag(this.tag))
         {
-            if(this.type == FruitType.Tier10) return; // 최종 단계는 합쳐지지 않음
+            if(this.type == FruitType.Tier9) return; // 최종 단계는 합쳐지지 않음
             
             SoundManager.Instance.MergeSound();
             // 합치는 기능
             GameManager.Instance.count += 2 * ((int)this.type + 1);
             objectPool.EnqueueObject(other.gameObject);
-            this.transform.localScale *= 1.25f;
+            this.transform.localScale *= powerRatio;
             this.type += 1;
             this.tag = this.type.ToString();
             fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
@@ -67,7 +67,7 @@ public class Fruits : MonoBehaviour
         this.type = fruitType;
         this.tag = this.type.ToString();
         fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
-        this.transform.localScale *= Mathf.Pow(1.25f, (float)this.type );
+        this.transform.localScale *= Mathf.Pow(powerRatio, (float)this.type );
     }
 
     private IEnumerator ColliderLatency()
