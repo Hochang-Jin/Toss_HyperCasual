@@ -1,8 +1,7 @@
 using UnityEngine;
 
-[System.Serializable]
 [CreateAssetMenu(fileName = "ColorData", menuName = "Scriptable Objects/ColorData")]
-public class ColorData : ScriptableObject
+public class ColorPalette : ScriptableObject
 {
     public Color tier1Color;
     public Color tier2Color;

@@ -1594,6 +1594,7 @@ MonoBehaviour:
   maxX: 1.6
   nextFruitType: 0
   isCollision: 1
+  currentColorPalette: {fileID: 11400000, guid: 4c35182290b08064da2c2b023b669920, type: 2}
 --- !u!4 &898764485
 Transform:
   m_ObjectHideFlags: 0

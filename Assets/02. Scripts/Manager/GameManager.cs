@@ -41,8 +41,11 @@ public class GameManager : MonoBehaviour
     public Fruits.FruitType nextFruitType;
 
     public bool isCollision = true;
+
+    public ColorPalette currentColorPalette;
     
     #endregion
+
     
     private void Awake()
     {
@@ -77,41 +80,44 @@ public class GameManager : MonoBehaviour
             HandleTouchInput();
         #endif
     }
+    #region Mouse Input
 
     void HandleMouseInput()
-    {
-        if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                return;
-            if (!isCollision)
-                return;
-            
-            Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            isDragging = true;
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                    return;
+                if (!isCollision)
+                    return;
+                
+                Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                isDragging = true;
+            }
+    
+            if (isDragging && Input.GetMouseButton(0))
+            {
+                Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                float clampedX = Mathf.Clamp(mouseWorld.x, minX, maxX);
+    
+                preview.transform.position = new Vector3(clampedX, yFixed, preview.transform.position.z);
+            }
+    
+            if (Input.GetMouseButtonUp(0))
+            {
+                if(!isDragging) return;
+                if(gameOver.isGameOver) return;
+                if (board.transform.rotation.eulerAngles.z % 90 != 0) return;
+                preview.SetActive(false);
+                
+                FruitCreate();
+                
+                isDragging = false;
+            }
         }
 
-        if (isDragging && Input.GetMouseButton(0))
-        {
-            Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            float clampedX = Mathf.Clamp(mouseWorld.x, minX, maxX);
-
-            preview.transform.position = new Vector3(clampedX, yFixed, preview.transform.position.z);
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            if(!isDragging) return;
-            if(gameOver.isGameOver) return;
-            if (board.transform.rotation.eulerAngles.z % 90 != 0) return;
-            preview.SetActive(false);
-            
-            FruitCreate();
-            
-            isDragging = false;
-        }
-    }
-
+    #endregion 
+    
     void HandleTouchInput()
     {
         if (Input.touchCount == 0)
