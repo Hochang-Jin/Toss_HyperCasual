@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37a2047042ab274988efd684d05969e, type: 3}
+  m_Name: Pastel
+  m_EditorClassIdentifier: 
+  tier1Color: {r: 1, g: 0.4117647, b: 0.38039216, a: 0}
+  tier2Color: {r: 1, g: 0.7058824, b: 0.5019608, a: 0}
+  tier3Color: {r: 0.972549, g: 0.9529412, b: 0.5529412, a: 0}
+  tier4Color: {r: 0.25882354, g: 0.8392157, b: 0.6431373, a: 0}
+  tier5Color: {r: 0.03137255, g: 0.7921569, b: 0.81960785, a: 0}
+  tier6Color: {r: 0.34901962, g: 0.6784314, b: 0.9647059, a: 1}
+  tier7Color: {r: 0.6156863, g: 0.5803922, b: 1, a: 1}
+  tier8Color: {r: 0.78039217, g: 0.5019608, b: 0.9098039, a: 1}
