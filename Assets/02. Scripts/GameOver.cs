@@ -38,6 +38,7 @@ public class GameOver : MonoBehaviour
         }
         else
         {
+            if(isGameOver) return;
             if (timer <= 0)
             {
                 timer = 0;
