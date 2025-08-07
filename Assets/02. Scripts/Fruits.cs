@@ -11,6 +11,8 @@ public class Fruits : MonoBehaviour
     public bool createFlag;
     public static float powerRatio = 1.225f;
 
+    private readonly int max = System.Enum.GetValues(typeof(FruitType)).Length;
+    
     public enum FruitType
     {
         Tier1,
@@ -20,8 +22,7 @@ public class Fruits : MonoBehaviour
         Tier5,
         Tier6,
         Tier7,
-        Tier8,
-        Tier9
+        Tier8
     }
     public FruitType type;
 
@@ -44,7 +45,7 @@ public class Fruits : MonoBehaviour
     {
         if (other.gameObject.CompareTag(this.tag))
         {
-            if(this.type == FruitType.Tier9) return; // 최종 단계는 합쳐지지 않음
+            if(this.type == (FruitType)(max - 1)) return; // 최종 단계는 합쳐지지 않음
             
             SoundManager.Instance.MergeSound();
             // 합치는 기능
