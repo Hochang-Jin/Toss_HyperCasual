@@ -29,7 +29,7 @@ public class Fruits : MonoBehaviour
     private void Awake()
     {
         fruitRenderer = GetComponent<SpriteRenderer>();
-        fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
+        fruitRenderer.color = GameManager.Instance.currentColorPalette.colors[(int)type];
         objectPool = FindFirstObjectByType<ObjectPool>();
         initScale = fruitRenderer.transform.localScale;
         col = GetComponent<Collider2D>();
@@ -54,7 +54,7 @@ public class Fruits : MonoBehaviour
             this.transform.localScale *= powerRatio;
             this.type += 1;
             this.tag = this.type.ToString();
-            fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
+            fruitRenderer.color = GameManager.Instance.currentColorPalette.colors[(int)type];
             col.enabled = false;
             col.enabled = true;
         }
@@ -67,7 +67,7 @@ public class Fruits : MonoBehaviour
     {
         this.type = fruitType;
         this.tag = this.type.ToString();
-        fruitRenderer.sprite = GameManager.Instance.fruitSprites[(int)type];
+        fruitRenderer.color = GameManager.Instance.currentColorPalette.colors[(int)type];
         this.transform.localScale *= Mathf.Pow(powerRatio, (float)this.type );
     }
 

@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     public GameObject preview;
     public Vector3 previewPosition;
     public SpriteRenderer previewRenderer;
-    public GameObject fruit;
     [FormerlySerializedAs("parent")] [SerializeField] private GameObject board;
     
     public ObjectPool objectPool;
@@ -220,7 +219,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ChangeSpriteRoutine()
     {
-        previewRenderer.sprite = fruitSprites[(int)curFruitType];
+        previewRenderer.color = currentColorPalette.colors[(int)curFruitType];
         yield return new WaitForSeconds(0.1f);
         float scale = 0.608f * Mathf.Pow(Fruits.powerRatio, (float)curFruitType);
         preview.transform.localScale = new Vector2(scale, scale);
