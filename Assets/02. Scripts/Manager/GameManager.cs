@@ -219,7 +219,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ChangeSpriteRoutine()
     {
-        previewRenderer.color = currentColorPalette.colors[(int)curFruitType];
+        Color32 color = currentColorPalette.colors[(int)curFruitType];
+        color.a = 105;
+        previewRenderer.color = color;
+        
         yield return new WaitForSeconds(0.1f);
         float scale = 0.608f * Mathf.Pow(Fruits.powerRatio, (float)curFruitType);
         preview.transform.localScale = new Vector2(scale, scale);
