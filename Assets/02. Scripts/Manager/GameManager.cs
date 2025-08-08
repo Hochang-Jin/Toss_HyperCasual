@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -26,8 +25,6 @@ public class GameManager : MonoBehaviour
     public ObjectPool objectPool;
     
     public Button restartButton;
-    
-    public Sprite[] fruitSprites;
     
     public float minX = -1.6f;
     public float maxX = 1.6f;
@@ -59,16 +56,21 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         
+        if (preview != null)
+                    yFixed = preview.transform.position.y;
+        
         restartButton.onClick.AddListener(Reset);
         previewPosition = preview.transform.localPosition;
         gameOver = gameOverObj.GetComponent<GameOver>();
 
     }
 
-    void Start()
+    private void Start()
     {
-        if (preview != null)
-            yFixed = preview.transform.position.y;
+        RandomType();
+        RandomType();
+        StartCoroutine(ChangeSpriteRoutine()); 
+        UIManager.Instance.NextFruit();
     }
 
     void Update()
@@ -235,6 +237,7 @@ public class GameManager : MonoBehaviour
         objectPool.PoolReset();
         Time.timeScale = 1f;
         SoundManager.Instance.ResetBGM();
+        RandomType();
         preview.SetActive(true);
     }
 }

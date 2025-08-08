@@ -73,6 +73,6 @@ public class UIManager : MonoBehaviour
 
     public void NextFruit()
     {
-        nextImg.sprite = GameManager.Instance.fruitSprites[(int)GameManager.Instance.nextFruitType];
+        nextImg.color = GameManager.Instance.currentColorPalette.colors[(int)GameManager.Instance.nextFruitType];
     }
 }
