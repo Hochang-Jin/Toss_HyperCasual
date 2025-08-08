@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     [SerializeField] private Image nextImg;
+    public Image[] tierPreviews;
     
     private void Awake()
     {
@@ -37,7 +38,7 @@ public class UIManager : MonoBehaviour
         }
         
         gameOver = gameOverObj.GetComponent<GameOver>();
-        
+        TierPreview();
     }
 
     private void Update()
@@ -74,5 +75,13 @@ public class UIManager : MonoBehaviour
     public void NextFruit()
     {
         nextImg.color = GameManager.Instance.currentColorPalette.colors[(int)GameManager.Instance.nextFruitType];
+    }
+
+    public void TierPreview()
+    {
+        for (int i = 0; i < tierPreviews.Length; i++)
+        {
+            tierPreviews[i].color = GameManager.Instance.currentColorPalette.colors[i];
+        }
     }
 }

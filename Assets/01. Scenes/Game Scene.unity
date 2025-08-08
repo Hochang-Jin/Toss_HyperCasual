@@ -2347,16 +2347,6 @@ MonoBehaviour:
   board: {fileID: 1800607823}
   objectPool: {fileID: 1800607829}
   restartButton: {fileID: 1100252487}
-  fruitSprites:
-  - {fileID: 39828227323110329, guid: 08980369713ecae498a69cecff346e4e, type: 3}
-  - {fileID: 1120665210743212723, guid: 08980369713ecae498a69cecff346e4e, type: 3}
-  - {fileID: -1581103141004884855, guid: 08980369713ecae498a69cecff346e4e, type: 3}
-  - {fileID: -8409635689750005401, guid: e07f30555c34e8c42a19c2bb4fc4f9ae, type: 3}
-  - {fileID: -8950669538380363422, guid: 08980369713ecae498a69cecff346e4e, type: 3}
-  - {fileID: -2277230467215431897, guid: 08980369713ecae498a69cecff346e4e, type: 3}
-  - {fileID: 5000543778919401536, guid: d51bed82c43643b4ab950b89e5092b2e, type: 3}
-  - {fileID: 7502442867536110650, guid: 08980369713ecae498a69cecff346e4e, type: 3}
-  - {fileID: -5400909659972323026, guid: 08980369713ecae498a69cecff346e4e, type: 3}
   minX: -1.6
   maxX: 1.6
   nextFruitType: 0
@@ -3787,6 +3777,15 @@ MonoBehaviour:
   scoreText: {fileID: 98596415}
   timerText: {fileID: 1409146487}
   nextImg: {fileID: 812971375}
+  tierPreviews:
+  - {fileID: 836538773}
+  - {fileID: 1003877521}
+  - {fileID: 549245252}
+  - {fileID: 1662884071}
+  - {fileID: 1080076}
+  - {fileID: 2027307225}
+  - {fileID: 340795341}
+  - {fileID: 218491381}
 --- !u!4 &1772678033
 Transform:
   m_ObjectHideFlags: 0
