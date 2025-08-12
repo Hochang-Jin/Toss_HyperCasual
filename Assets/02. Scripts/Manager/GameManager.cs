@@ -239,6 +239,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SoundManager.Instance.ResetBGM();
         RandomType();
+        RandomType();
+        StartCoroutine(ChangeSpriteRoutine());
         preview.SetActive(true);
     }
 }
