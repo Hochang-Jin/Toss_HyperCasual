@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip reverseTimerSound;
     public AudioClip dropSound;
     public AudioClip mergeSound;
+    public AudioClip rotationSound;
     
     public Button muteButton;
     private Image muteImage;
@@ -84,6 +85,11 @@ public class SoundManager : MonoBehaviour
         effectSource.PlayOneShot(dropSound);
     }
 
+    public void RotationSound()
+    {
+        effectSource.PlayOneShot(rotationSound);
+    }
+    
     public void MergeSound()
     {
         effectSource.PlayOneShot(mergeSound);

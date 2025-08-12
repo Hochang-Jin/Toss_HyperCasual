@@ -5482,6 +5482,7 @@ MonoBehaviour:
   reverseTimerSound: {fileID: 8300000, guid: 3f9da69aa2efcd94f82ef16f6a27332f, type: 3}
   dropSound: {fileID: 8300000, guid: efa95f73191f17b4abf39ff440f03a11, type: 3}
   mergeSound: {fileID: 8300000, guid: 373e03dd6d28d394091e8bc674445735, type: 3}
+  rotationSound: {fileID: 8300000, guid: d1a19660867cf95458ab98ce24bbb00d, type: 3}
   muteButton: {fileID: 851283853}
   muteImages:
   - {fileID: 21300000, guid: 689f2ae1d1da341259d3e37068efeec6, type: 3}

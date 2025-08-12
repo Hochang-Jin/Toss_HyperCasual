@@ -26,6 +26,8 @@ public class Board : MonoBehaviour
         Quaternion startRot = transform.rotation;
         Quaternion endRot = transform.rotation * Quaternion.Euler(0, 0, rotation);
         
+        SoundManager.Instance.RotationSound();
+        
         while (timer < targetTime)
         {
             transform.rotation = Quaternion.Slerp(startRot, endRot, timer / targetTime);
