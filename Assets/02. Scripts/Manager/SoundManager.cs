@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource backgroundSource;
     public AudioSource timerSource;
     public AudioSource effectSource;
+    public AudioSource settingSource;
     
     public AudioClip backgroundMusic;
     public AudioClip endingMusic;
@@ -17,10 +18,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip dropSound;
     public AudioClip mergeSound;
     public AudioClip rotationSound;
-    
-    public Button muteButton;
-    private Image muteImage;
-    public Sprite[] muteImages;
+
+    public bool bgmMute = false;
+    public bool effectMute = false;
 
     private void Awake()
     {
@@ -39,16 +39,20 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         ResetBGM();
-        muteImage = muteButton.GetComponent<Image>();
-        muteButton.onClick.AddListener(MuteBGM);
     }
 
-    private void MuteBGM()
+    public void MuteBGM()
     {
-        int idx = backgroundSource.mute ? 0 : 1;
-        muteImage.sprite = muteImages[idx];
         backgroundSource.mute = !backgroundSource.mute;
+        bgmMute = !bgmMute;
+    }
+
+    public void MuteEffect()
+    {
         timerSource.mute = !timerSource.mute;
+        effectSource.mute = !effectSource.mute;
+        settingSource.mute = !settingSource.mute;
+        effectMute = !effectMute;
     }
 
     public void ResetBGM()
