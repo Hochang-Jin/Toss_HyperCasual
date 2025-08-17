@@ -22,6 +22,8 @@ public class SoundManager : MonoBehaviour
     public bool bgmMute = false;
     public bool effectMute = false;
 
+    public Transform popup;
+
     private void Awake()
     {
         // singleton 
