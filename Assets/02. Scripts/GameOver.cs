@@ -9,6 +9,9 @@ public class GameOver : MonoBehaviour
 
     public float timer;
     public bool isGameOver = false;
+    
+    public PopupSound gameOverSound;
+    public PopupSound winSound;
 
     private bool isTimerON;
     private bool isReverseTimer;
@@ -64,7 +67,20 @@ public class GameOver : MonoBehaviour
         isGameOver = true;
         isReverseTimer = false;
         isTimerON = false;
+        gameOverSound.Mute();
         UIManager.Instance.GameOverUI();
+        SoundManager.Instance.BGMOff();
+        GameManager.Instance.preview.SetActive(false);
+    }
+
+    public void WinGame()
+    {
+        if(isGameOver) return;
+        isGameOver = true;
+        isReverseTimer = false;
+        isTimerON = false;
+        winSound.Mute();
+        UIManager.Instance.WinUI();
         SoundManager.Instance.BGMOff();
         GameManager.Instance.preview.SetActive(false);
     }

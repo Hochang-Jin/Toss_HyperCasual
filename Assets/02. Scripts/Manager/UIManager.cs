@@ -13,11 +13,14 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverObj;
     private GameOver gameOver;
     public TextMeshProUGUI gameOverScore;
+    public TextMeshProUGUI winScore;
     
     public Animator gameOverAnimator;
+    public Animator winAnimator;
     
     public GameObject gameOverUI;
     public GameObject playingUI;
+    public GameObject winUI;
     
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
@@ -64,10 +67,19 @@ public class UIManager : MonoBehaviour
         gameOverAnimator.SetTrigger("GameOver");
     }
 
+    public void WinUI()
+    {
+        playingUI.SetActive(false);
+        winUI.SetActive(true);
+        winScore.text = GameManager.Instance.score.ToString();
+        winAnimator.SetTrigger("GameOver");
+    }
+
     public void UIReset()
     {
         playingUI.SetActive(true);
         gameOverUI.SetActive(false);
+        winUI.SetActive(false);
         gameOver.timer = 0;
         gameOver.isGameOver = false;
         

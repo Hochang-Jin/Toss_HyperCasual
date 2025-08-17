@@ -10,6 +10,7 @@ public class Fruits : MonoBehaviour
     private Collider2D col;
     public bool createFlag;
     public static float powerRatio = 1.225f;
+    private GameOver gameOver;
 
     private readonly int max = System.Enum.GetValues(typeof(FruitType)).Length;
     
@@ -33,6 +34,7 @@ public class Fruits : MonoBehaviour
         objectPool = FindFirstObjectByType<ObjectPool>();
         initScale = fruitRenderer.transform.localScale;
         col = GetComponent<Collider2D>();
+        gameOver = GameManager.Instance.gameOverObj.GetComponent<GameOver>();
     }
 
     private void OnEnable()
@@ -57,6 +59,11 @@ public class Fruits : MonoBehaviour
             fruitRenderer.color = GameManager.Instance.currentColorPalette.colors[(int)type];
             col.enabled = false;
             col.enabled = true;
+
+            if ((int)this.type == max - 1)
+            {
+                gameOver.WinGame();
+            }
         }
         if(!createFlag) return;
         createFlag = false;

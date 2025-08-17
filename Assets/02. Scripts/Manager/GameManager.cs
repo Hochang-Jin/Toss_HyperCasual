@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public ObjectPool objectPool;
     
     public Button restartButton;
+    public Button restartButtonWin;
     
     public float minX = -1.6f;
     public float maxX = 1.6f;
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
                     yFixed = preview.transform.position.y;
         
         restartButton.onClick.AddListener(Reset);
+        restartButtonWin.onClick.AddListener(Reset);
         previewPosition = preview.transform.localPosition;
         gameOver = gameOverObj.GetComponent<GameOver>();
 
