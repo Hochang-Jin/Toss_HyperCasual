@@ -30,7 +30,6 @@ public class GameOver : MonoBehaviour
             {
                 SoundManager.Instance.TimerOff();
                 Gameover();
-                SoundManager.Instance.EndingSound();
                 isTimerON = false;
                 isReverseTimer = false;
             }
@@ -71,6 +70,7 @@ public class GameOver : MonoBehaviour
         UIManager.Instance.GameOverUI();
         SoundManager.Instance.BGMOff();
         GameManager.Instance.preview.SetActive(false);
+        SoundManager.Instance.EndingSound();
     }
 
     public void WinGame()
@@ -83,6 +83,7 @@ public class GameOver : MonoBehaviour
         UIManager.Instance.WinUI();
         SoundManager.Instance.BGMOff();
         GameManager.Instance.preview.SetActive(false);
+        SoundManager.Instance.EndingSound();
     }
 }
 
