@@ -184,16 +184,15 @@ public class GameManager : MonoBehaviour
     private void RandomType()
     {
         int ranVal = Random.Range(0, 10);
-        if (ranVal < 1) // 0 (10%)
+        if (ranVal < 2) // 0, 1 (20%)
             ranVal = 0;
-        else if (ranVal < 3) // 1, 2 (20%)
+        else if (ranVal < 4) // 2, 3 (20%)
             ranVal = 1;
-        else if (ranVal < 6) // 3, 4, 5 (30%)
+        else if (ranVal < 7) //  4, 5, 6 (30%)
             ranVal = 2;
-        else if (ranVal < 9) // 6, 7, 8 (30%)
+        else if (ranVal < 10) // 7, 8, 9 (30%)
             ranVal = 3;
-        else if (ranVal < 10) //  9 (10%)
-            ranVal = 4;
+        
 
         curFruitType = nextFruitType;
         nextFruitType = (Fruits.FruitType)ranVal;
