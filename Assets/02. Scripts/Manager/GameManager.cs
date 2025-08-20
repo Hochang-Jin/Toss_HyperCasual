@@ -184,13 +184,13 @@ public class GameManager : MonoBehaviour
     private void RandomType()
     {
         int ranVal = Random.Range(0, 10);
-        if (ranVal < 2) // 0, 1 (20%)
+        if (ranVal < 3) // 0, 1, 2 (30%)
             ranVal = 0;
-        else if (ranVal < 4) // 2, 3 (20%)
+        else if (ranVal < 6) // 3, 4, 5 (30%)
             ranVal = 1;
-        else if (ranVal < 7) //  4, 5, 6 (30%)
+        else if (ranVal < 8) // 6, 7 (20%)
             ranVal = 2;
-        else if (ranVal < 10) // 7, 8, 9 (30%)
+        else if (ranVal < 10) // 8, 9 (20%)
             ranVal = 3;
         
 
@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
     IEnumerator ChangeSpriteRoutine()
     {
         Color32 color = currentColorPalette.colors[(int)curFruitType];
-        color.a = 105;
+        color.a = 175;
         previewRenderer.color = color;
         
         yield return new WaitForSeconds(0.1f);
