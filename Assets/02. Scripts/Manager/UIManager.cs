@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
         public Image nextImg;
         public Image[] tierPreviews;
     }
+
+    private int prevIndex = 0;
     
     // Singleton 
     public static UIManager Instance { get; private set; }
@@ -48,6 +50,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Image nextImg;
     public Image[] tierPreviews;
+    public Image[] tierPreviews2;
 
     [SerializeField] private UIClass[] uiClasses;
     
@@ -65,6 +68,10 @@ public class UIManager : MonoBehaviour
         }
         
         gameOver = gameOverObj.GetComponent<GameOver>();
+    }
+
+    private void Start()
+    {
         TierPreview();
     }
 
@@ -118,6 +125,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < tierPreviews.Length; i++)
         {
             tierPreviews[i].color = GameManager.Instance.currentColorPalette.colors[i];
+            tierPreviews2[i].color = GameManager.Instance.currentColorPalette.colors[i];
         }
     }
 
@@ -141,12 +149,8 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < uiClasses.Length; i++)
         {
-            if (i == index)
-            {
-                uiClasses[i].canvas.SetActive(true);
-                continue;
-            }
             uiClasses[i].canvas.SetActive(false);
         }
+        uiClasses[index].canvas.SetActive(true);
     }
 }

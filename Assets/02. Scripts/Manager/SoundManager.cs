@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource timerSource;
     public AudioSource effectSource;
     public AudioSource settingSource;
+    public AudioSource settingSourceHorizontal;
     
     public AudioClip backgroundMusic;
     public AudioClip endingMusic;
@@ -54,6 +55,7 @@ public class SoundManager : MonoBehaviour
         timerSource.mute = !timerSource.mute;
         effectSource.mute = !effectSource.mute;
         settingSource.mute = !settingSource.mute;
+        settingSourceHorizontal.mute = !settingSourceHorizontal.mute;
         effectMute = !effectMute;
     }
 

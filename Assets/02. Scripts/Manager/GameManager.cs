@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     
     public Button restartButton;
     public Button restartButtonWin;
+    public Button horizontalRestartButton;
+    public Button horizontalRestartButtonWin;
     
     public float minX = -1.6f;
     public float maxX = 1.6f;
@@ -62,6 +64,8 @@ public class GameManager : MonoBehaviour
         
         restartButton.onClick.AddListener(Reset);
         restartButtonWin.onClick.AddListener(Reset);
+        horizontalRestartButton.onClick.AddListener(Reset);
+        horizontalRestartButtonWin.onClick.AddListener(Reset);
         previewPosition = preview.transform.localPosition;
         gameOver = gameOverObj.GetComponent<GameOver>();
 
@@ -216,6 +220,12 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.NextFruit();
         StartCoroutine(ChangeSpriteRoutine());
         isCollision = true;
+    }
+
+    public void AfterUIChanged()
+    {
+        StartCoroutine(ChangeSpriteRoutine());
+        UIManager.Instance.NextFruit();
     }
 
     IEnumerator ChangeSpriteRoutine()
