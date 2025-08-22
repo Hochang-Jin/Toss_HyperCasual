@@ -7,6 +7,27 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [Serializable]
+    private class UIClass
+    {
+        public GameObject canvas;
+        public TextMeshProUGUI gameOverScore;
+        public TextMeshProUGUI winScore;
+    
+        public Animator gameOverAnimator;
+        public Animator winAnimator;
+    
+        public GameObject gameOverUI;
+        public GameObject playingUI;
+        public GameObject winUI;
+    
+        public TextMeshProUGUI scoreText;
+        public TextMeshProUGUI timerText;
+        
+        public Image nextImg;
+        public Image[] tierPreviews;
+    }
+    
     // Singleton 
     public static UIManager Instance { get; private set; }
     
@@ -27,6 +48,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Image nextImg;
     public Image[] tierPreviews;
+
+    [SerializeField] private UIClass[] uiClasses;
     
     private void Awake()
     {
@@ -95,6 +118,35 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < tierPreviews.Length; i++)
         {
             tierPreviews[i].color = GameManager.Instance.currentColorPalette.colors[i];
+        }
+    }
+
+    public void SetUI(int index)
+    {
+        gameOverScore = uiClasses[index].gameOverScore;
+        winScore = uiClasses[index].winScore;
+
+        gameOverAnimator = uiClasses[index].gameOverAnimator;
+        winAnimator = uiClasses[index].winAnimator;
+
+        gameOverUI = uiClasses[index].gameOverUI;
+        playingUI = uiClasses[index].playingUI;
+        winUI = uiClasses[index].winUI;
+
+        scoreText = uiClasses[index].scoreText;
+        timerText = uiClasses[index].timerText;
+
+        nextImg = uiClasses[index].nextImg;
+        tierPreviews = uiClasses[index].tierPreviews;
+
+        for (int i = 0; i < uiClasses.Length; i++)
+        {
+            if (i == index)
+            {
+                uiClasses[i].canvas.SetActive(true);
+                continue;
+            }
+            uiClasses[i].canvas.SetActive(false);
         }
     }
 }
