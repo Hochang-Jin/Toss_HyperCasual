@@ -297,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11475706, guid: 9fcc1076395eca947898d445af94e98f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22443118, guid: 9fcc1076395eca947898d445af94e98f, type: 3}
       propertyPath: m_Pivot.x
@@ -2849,7 +2849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11475706, guid: 9fcc1076395eca947898d445af94e98f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22443118, guid: 9fcc1076395eca947898d445af94e98f, type: 3}
       propertyPath: m_Pivot.x
@@ -4218,7 +4218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11475706, guid: 6134f5535a58ca24e9beeaa72096fa06, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22443118, guid: 6134f5535a58ca24e9beeaa72096fa06, type: 3}
       propertyPath: m_Pivot.x
@@ -6012,7 +6012,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11475706, guid: 6134f5535a58ca24e9beeaa72096fa06, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22443118, guid: 6134f5535a58ca24e9beeaa72096fa06, type: 3}
       propertyPath: m_Pivot.x
@@ -9456,7 +9456,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 'Canvas - 9 : 16'
+          m_StringArgument: 'Canvas - 3 : 4'
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!95 &7904281977121612816
