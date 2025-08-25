@@ -9,7 +9,7 @@ public class Fruits : MonoBehaviour
     private Vector3 initScale;
     private Collider2D col;
     public bool createFlag;
-    public static float powerRatio = 1.225f;
+    public static float powerRatio = 1.22f;
     private GameOver gameOver;
 
     private readonly int max = System.Enum.GetValues(typeof(FruitType)).Length;
@@ -23,7 +23,8 @@ public class Fruits : MonoBehaviour
         Tier5,
         Tier6,
         Tier7,
-        Tier8
+        Tier8,
+        Tier9
     }
     public FruitType type;
 
