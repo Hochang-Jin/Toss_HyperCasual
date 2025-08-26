@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Image nextImg;
     public Image[] tierPreviews;
+    public Image[] tierPreviews1;
     public Image[] tierPreviews2;
 
     [SerializeField] private UIClass[] uiClasses;
@@ -123,7 +124,7 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < tierPreviews.Length; i++)
         {
-            tierPreviews[i].color = GameManager.Instance.currentColorPalette.colors[i];
+            tierPreviews1[i].color = GameManager.Instance.currentColorPalette.colors[i];
             tierPreviews2[i].color = GameManager.Instance.currentColorPalette.colors[i];
         }
     }

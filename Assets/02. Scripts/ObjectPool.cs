@@ -26,6 +26,7 @@ public class ObjectPool : MonoBehaviour
     public void EnqueueObject(GameObject go)
     {
         objectPool.Enqueue(go);
+        go.layer = 0;
         go.SetActive(false);
     }
 

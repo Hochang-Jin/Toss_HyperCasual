@@ -55,13 +55,13 @@ public class UIOrientationManager : MonoBehaviour
         if (Screen.width > Screen.height) // 가로
         {
             UIManager.Instance.SetUI(1);
-            SetResolution(1920, 1080);
+            // SetResolution(1920, 1080);
             GameManager.Instance.AfterUIChanged();
         }
         else
         {
             UIManager.Instance.SetUI(0);
-            SetResolution(1200, 1600);
+            // SetResolution(1200, 1600);
             GameManager.Instance.AfterUIChanged();
         }
     }
