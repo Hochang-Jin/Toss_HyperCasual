@@ -68,6 +68,7 @@ public class Fruits : MonoBehaviour
         }
         if(!createFlag) return;
         createFlag = false;
+        this.gameObject.layer = 6;
         GameManager.Instance.AfterCreate();
     }
 

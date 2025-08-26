@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4562017006313950438}
   - component: {fileID: 8656147031790137856}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 9207712914721768465}
   - component: {fileID: 367652905483782713}
   - component: {fileID: 7517859767794841137}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fruit
   m_TagString: Orange
   m_Icon: {fileID: 0}
@@ -254,4 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createFlag: 0
+  fruitLayer:
+    serializedVersion: 2
+    m_Bits: 64
   type: 0
