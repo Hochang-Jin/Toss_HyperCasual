@@ -42,9 +42,11 @@ public class GameManager : MonoBehaviour
     public bool isCollision = true;
 
     public ColorPalette currentColorPalette;
+
+    public short rotCount = 4;
+    public float timer;
     
     #endregion
-
     
     private void Awake()
     {
@@ -81,6 +83,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
+        if (timer >= 2f)
+        {
+            timer = 0;
+            if(rotCount < 4)
+                rotCount++;
+        }
         #if UNITY_EDITOR || UNITY_STANDALONE
             HandleMouseInput();
         #elif UNITY_ANDROID || UNITY_IOS || UNITY_WEBGL
@@ -242,6 +251,7 @@ public class GameManager : MonoBehaviour
 
     private void Reset()
     {
+        rotCount = 4;
         score = 0;
         isDragging = false;
         preview.transform.position = previewPosition;

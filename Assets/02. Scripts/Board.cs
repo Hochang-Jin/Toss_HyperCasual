@@ -15,7 +15,11 @@ public class Board : MonoBehaviour
 
     public void Rotation(bool isLeft)
     {
-        coroutines.Enqueue(RotateRoutine(isLeft));
+        if (GameManager.Instance.rotCount > 0)
+        {
+            GameManager.Instance.rotCount--;
+            coroutines.Enqueue(RotateRoutine(isLeft));
+        }
     }
 
     IEnumerator RotateRoutine(bool isLeft)

@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
         
         public Image nextImg;
         public Image[] tierPreviews;
+
+        public TextMeshProUGUI rotCountText;
     }
 
     private int prevIndex = 0;
@@ -53,6 +55,8 @@ public class UIManager : MonoBehaviour
     public Image[] tierPreviews1;
     public Image[] tierPreviews2;
 
+    public TextMeshProUGUI rotCountText;
+
     [SerializeField] private UIClass[] uiClasses;
     
     private void Awake()
@@ -79,6 +83,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         scoreText.text = GameManager.Instance.score.ToString();
+        rotCountText.text = GameManager.Instance.rotCount.ToString();
         if (gameOver.timer > 0)
         {
             timerText.gameObject.SetActive(true);
@@ -146,6 +151,8 @@ public class UIManager : MonoBehaviour
 
         nextImg = uiClasses[index].nextImg;
         tierPreviews = uiClasses[index].tierPreviews;
+        
+        rotCountText = uiClasses[index].rotCountText;
 
         for (int i = 0; i < uiClasses.Length; i++)
         {
