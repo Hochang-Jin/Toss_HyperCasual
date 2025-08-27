@@ -83,7 +83,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        if(rotCount != 4)
+            timer += Time.deltaTime;
         if (timer >= 2f)
         {
             timer = 0;
