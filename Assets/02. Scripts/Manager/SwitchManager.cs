@@ -37,4 +37,19 @@ public class SwitchManager : MonoBehaviour
             SoundManager.Instance.MuteEffect();
         }
     }
+
+    public void SwitchValue()
+    {
+        m_musicSlider = GetComponent<Slider>();
+        if (bgm)
+        {
+            int value = SoundManager.Instance.bgmMute ? 1 : 0;
+            m_musicSlider.value = value;
+        }
+        else
+        {
+            int value = SoundManager.Instance.effectMute ? 1 : 0;
+            m_musicSlider.value = value;
+        }
+    }
 }
