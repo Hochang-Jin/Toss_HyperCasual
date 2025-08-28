@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         RandomType();
         RandomType();
-        StartCoroutine(ChangeSpriteRoutine()); 
+        ChangeSpriteRoutine();
         UIManager.Instance.NextFruit();
     }
 
@@ -123,13 +123,12 @@ public class GameManager : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 if(!isDragging) return;
+                isDragging = false;
                 if(gameOver.isGameOver) return;
                 if (board.transform.rotation.eulerAngles.z % 90 != 0) return;
-                preview.SetActive(false);
                 
                 FruitCreate();
                 
-                isDragging = false;
             }
         }
 
@@ -152,7 +151,6 @@ public class GameManager : MonoBehaviour
                     return;
 
                 isDragging = true;
-                preview.SetActive(true);
                 break;
 
             case TouchPhase.Moved:
@@ -167,12 +165,10 @@ public class GameManager : MonoBehaviour
             case TouchPhase.Ended:
             case TouchPhase.Canceled:
                 if (!isDragging) return;
+                isDragging = false;
                 if(gameOver.isGameOver) return;
                 // 회전이 끝나지 않았으면 과일을 생성하지 않음
                 if (board.transform.rotation.eulerAngles.z % 90 != 0) return;
-
-                isDragging = false;
-                preview.SetActive(false);
 
                 FruitCreate();
                 break;
@@ -214,6 +210,8 @@ public class GameManager : MonoBehaviour
     
     public void FruitCreate()
     {
+        preview.SetActive(false);
+
         GameObject fruitObj = objectPool.DequeueObject();
         fruitObj.transform.position = preview.transform.position;
         fruitObj.transform.rotation = preview.transform.rotation;
@@ -228,23 +226,22 @@ public class GameManager : MonoBehaviour
     {
         RandomType();
         UIManager.Instance.NextFruit();
-        StartCoroutine(ChangeSpriteRoutine());
+        ChangeSpriteRoutine();
         isCollision = true;
     }
 
     public void AfterUIChanged()
     {
-        StartCoroutine(ChangeSpriteRoutine());
+        ChangeSpriteRoutine();
         UIManager.Instance.NextFruit();
     }
 
-    IEnumerator ChangeSpriteRoutine()
+    public void ChangeSpriteRoutine()
     {
         Color32 color = currentColorPalette.colors[(int)curFruitType];
         color.a = 175;
         previewRenderer.color = color;
         
-        yield return new WaitForSeconds(0.1f);
         float scale = 0.608f * Mathf.Pow(Fruits.powerRatio, (float)curFruitType);
         preview.transform.localScale = new Vector2(scale, scale);
         preview.SetActive(true);
@@ -262,7 +259,7 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.ResetBGM();
         RandomType();
         RandomType();
-        StartCoroutine(ChangeSpriteRoutine());
+        ChangeSpriteRoutine();
         preview.SetActive(true);
     }
 }
