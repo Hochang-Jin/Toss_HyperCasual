@@ -118,6 +118,7 @@ public class UIManager : MonoBehaviour
         winUI.SetActive(false);
         gameOver.timer = 0;
         gameOver.isGameOver = false;
+        UIOrientationManager.Instance.UpdateLayout();
     }
 
     public void NextFruit()
