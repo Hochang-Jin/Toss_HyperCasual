@@ -262,4 +262,9 @@ public class GameManager : MonoBehaviour
         ChangeSpriteRoutine();
         preview.SetActive(true);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
